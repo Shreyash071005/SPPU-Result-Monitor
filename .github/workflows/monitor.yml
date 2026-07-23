@@ -1,0 +1,77 @@
+name: SPPU Result Monitor
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Checkout Repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Install Dependencies
+      - name: Install Requirements
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Create Data Directory (if not present)
+      - name: Create Data Directory
+        run: |
+          mkdir -p data
+
+      # Create Initial JSON Files (if not present)
+      - name: Create JSON Files
+        run: |
+          if [ ! -f data/result_history.json ]; then
+            echo '{"declared_results":[]}' > data/result_history.json
+          fi
+
+          if [ ! -f data/latest_results.json ]; then
+            echo '{"latest_results":[]}' > data/latest_results.json
+          fi
+
+      # Create .env File From GitHub Secrets
+      - name: Create Environment File
+        run: |
+          echo "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" >> .env
+          echo "EMAIL_APP_PASSWORD=${{ secrets.EMAIL_APP_PASSWORD }}" >> .env
+          echo "NOTIFICATION_EMAIL=${{ secrets.NOTIFICATION_EMAIL }}" >> .env
+          echo "WEBSITE_NAME=SPPU Result Monitor" >> .env
+          echo "CHECK_INTERVAL=300" >> .env
+
+      # Run Monitor
+      - name: Run Monitor
+        run: |
+          python monitor.py
+
+      # Commit Changes
+      - name: Commit Changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git add .
+
+          git diff --staged --quiet || git commit -m "Auto Update Result Monitor"
+
+      # Push Changes
+      - name: Push Changes
+        run: |
+          git push
