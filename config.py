@@ -37,16 +37,11 @@ LATEST_RESULTS_FILE = (
 # WEBSITE DIRECTORY
 # ==========================================================
 
-WEBSITE_DIR = BASE_DIR / "website"
+WEBSITE_DIR = BASE_DIR / "docs"
 
-INDEX_FILE = (
-    WEBSITE_DIR / "index.html"
-)
+INDEX_FILE = WEBSITE_DIR / "index.html"
 
-STYLE_FILE = (
-    WEBSITE_DIR / "style.css"
-)
-
+STYLE_FILE = WEBSITE_DIR / "style.css"
 
 # ==========================================================
 # SPPU RESULT DASHBOARD
