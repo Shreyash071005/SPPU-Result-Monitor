@@ -25,8 +25,8 @@ __pycache__/
 # DATA FILES
 # =====================================
 
-data/result_history.json
-data/latest_results.json
+# data/result_history.json
+# data/latest_results.json
 
 
 # =====================================
