@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pytz
 
@@ -23,24 +23,16 @@ class WebsiteGenerator:
 
         history_manager = HistoryManager()
 
-        results = (
-            history_manager.get_latest_results()
-        )
+        results = history_manager.get_latest_results()
 
-        html_content = (
-            self.generate_html(
-                results
-            )
+        html_content = self.generate_html(
+            results
         )
 
         with open(
-
                 INDEX_FILE,
-
                 "w",
-
                 encoding="utf-8",
-
         ) as file:
 
             file.write(
@@ -48,63 +40,112 @@ class WebsiteGenerator:
             )
 
     # ==========================================================
-    # GENERATE HTML CONTENT
+    # GENERATE HTML
     # ==========================================================
 
     def generate_html(
-
             self,
-
             results,
-
     ):
 
-        india_timezone = (
-            pytz.timezone(
-                "Asia/Kolkata"
+        india_timezone = pytz.timezone(
+            "Asia/Kolkata"
+        )
+
+        last_checked = datetime.now(
+            india_timezone
+        )
+
+        next_run = (
+                last_checked +
+                timedelta(minutes=5)
+        )
+
+        last_checked_str = (
+            last_checked.strftime(
+                "%d %B %Y %I:%M:%S %p IST"
             )
         )
 
-        last_checked = (
-
-            datetime.now(
-                india_timezone
-            ).strftime(
-                "%d %B %Y %I:%M:%S %p"
+        next_run_str = (
+            next_run.strftime(
+                "%d %B %Y %I:%M:%S %p IST"
             )
-
         )
+
+        total_results = len(results)
+
+        # ------------------------------------------------------
+        # LATEST RESULT
+        # ------------------------------------------------------
 
         latest_result_html = ""
 
+        if results:
+
+            latest = results[-1]
+
+            latest_result_html = f"""
+            <div class="latest-result">
+
+                <h3>{latest["title"]}</h3>
+
+                <p>
+                <b>Academic Year :</b>
+                {latest["year"]}
+                </p>
+
+                <p>
+                <b>Credit Pattern :</b>
+                {latest["pattern"]}
+                </p>
+
+                <p>
+                <b>Declared On :</b>
+                {latest["result_date"]}
+                </p>
+
+            </div>
+            """
+
+        # ------------------------------------------------------
+        # DECLARED RESULT CARDS
+        # ------------------------------------------------------
+
+        result_cards = ""
+
         for result in reversed(results):
 
-            latest_result_html += f"""
+            result_cards += f"""
 
             <div class="result-card">
 
                 <h3>
-                    {result["title"]}
+                {result["title"]}
                 </h3>
 
                 <p>
-                    <b>Academic Year :</b>
-                    {result["year"]}
+                <b>Academic Year :</b>
+                {result["year"]}
                 </p>
 
                 <p>
-                    <b>Credit Pattern :</b>
-                    {result["pattern"]}
+                <b>Credit Pattern :</b>
+                {result["pattern"]}
                 </p>
 
                 <p>
-                    <b>Result Date :</b>
-                    {result["result_date"]}
+                <b>Result Date :</b>
+                {result["result_date"]}
                 </p>
 
             </div>
 
             """
+
+        # ------------------------------------------------------
+        # HTML
+        # ------------------------------------------------------
 
         return f"""
 
@@ -114,14 +155,17 @@ class WebsiteGenerator:
 
 <head>
 
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>
 {WEBSITE_NAME}
 </title>
 
-<link
-rel="stylesheet"
-href="style.css"
->
+<link rel="stylesheet"
+href="style.css">
 
 </head>
 
@@ -133,49 +177,138 @@ href="style.css"
 {WEBSITE_NAME}
 </h1>
 
-<hr>
+
+<div class="status-box">
 
 <h2>
 Monitoring Status
 </h2>
 
-<p>
-ACTIVE
+<p class="active-status">
+● ACTIVE
 </p>
 
-<hr>
+</div>
+
+
+<div class="info-box">
 
 <h2>
-Last Checked
+Last Monitoring Run
 </h2>
 
 <p>
-{last_checked}
+{last_checked_str}
 </p>
 
-<hr>
+</div>
+
+
+<div class="info-box">
+
+<h2>
+Next Monitoring Run
+</h2>
+
+<p>
+{next_run_str}
+</p>
+
+</div>
+
+
+<div class="info-box">
+
+<h2>
+Monitoring Frequency
+</h2>
+
+<p>
+Every 5 Minutes
+</p>
+
+</div>
+
+
+<div class="info-box">
+
+<h2>
+Total Results Stored
+</h2>
+
+<p>
+{total_results}
+</p>
+
+</div>
+
+
+<h2>
+Latest Declared Result
+</h2>
+
+{latest_result_html}
+
 
 <h2>
 Declared Results
 </h2>
 
-{latest_result_html}
+{result_cards}
 
-<hr>
+
+<div class="official-link">
 
 <h2>
 Official SPPU Result Dashboard
 </h2>
 
-<a href="{RESULT_DASHBOARD_URL}">
+<a href="{RESULT_DASHBOARD_URL}"
+target="_blank">
+
 Visit Official Website
+
 </a>
 
-<hr>
+</div>
+
+
+<div class="system-info">
+
+<h2>
+System Information
+</h2>
 
 <p>
-Powered by GitHub Actions
+Hosting : GitHub Pages
 </p>
+
+<p>
+Automation : GitHub Actions
+</p>
+
+<p>
+Backend : Python 3.12
+</p>
+
+<p>
+Monitoring : 24 x 7
+</p>
+
+</div>
+
+
+<div class="footer">
+
+<p>
+Powered By
+</p>
+
+<p>
+Python + GitHub Actions + GitHub Pages
+</p>
+
+</div>
 
 </div>
 
