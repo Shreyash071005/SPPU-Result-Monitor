@@ -186,9 +186,7 @@ def monitor_results():
     # FIRST DEPLOYMENT LOGIC
     # ------------------------------------------------------
 
-    first_deployment = (
-        is_first_deployment()
-    )
+    first_deployment = False
 
     if first_deployment:
 
