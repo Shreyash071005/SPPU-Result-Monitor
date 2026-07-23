@@ -1,3 +1,85 @@
 {
-    "latest_results": [ ]
+    "latest_results": [
+        {
+            "title": "45 B.E.(2019 PAT.) SUMMER SESSION 2026 15- July- 2026",
+            "year": "BE",
+            "pattern": "2019",
+            "result_date": "15- July- 2026",
+            "serial_number": "45",
+            "pattern_name": "4gaqp6wzEND59+ODORZN4rWIXNq++NZnRMAApqPcJjFZ3PHnHFLkPZMGqlBsaj4b",
+            "pattern_id": "m1BNQI1K4Neq+T7ZlFSbDA=="
+        },
+        {
+            "title": "366 S.E.(2024 Pattern (NEP 2020)) Winter Session 2025 12- February- 2026",
+            "year": "SE",
+            "pattern": "2024",
+            "result_date": "12- February- 2026",
+            "serial_number": "366",
+            "pattern_name": "8KxXsDb4OrSchZ6kTSbK4JUryIA2CStXNmgZT1pKUNF2XnizH3vuzGKVgf8fGU/OCOXf1xEXw6qG/pODW4DBpg==",
+            "pattern_id": "0rGJKQRW65WsN0lOuyTumg=="
+        },
+        {
+            "title": "367 T.E.(2019 Credit Pattern) Winter Session 2025 10- February- 2026",
+            "year": "TE",
+            "pattern": "2019",
+            "result_date": "10- February- 2026",
+            "serial_number": "367",
+            "pattern_name": "ilA5uYIdfe3sbVz7flKjya5rs2zNbLPnDxRXiLXpWyUfNyJmfXwhhdQ/nGeiGu5J",
+            "pattern_id": "GxTZTSYcOVy18dCZIascgA=="
+        },
+        {
+            "title": "370 S.E.(2019 CREDIT PAT.) WINTER SESSION 2025 06- February- 2026",
+            "year": "SE",
+            "pattern": "2019",
+            "result_date": "06- February- 2026",
+            "serial_number": "370",
+            "pattern_name": "pAHWmX+K1qkkEk0IVOoggXE3yI1VAR6LnXK8ZS8tsPE5120xFUOvpItiOey34314",
+            "pattern_id": "OJj/vWOWq0LY+3wKuGCrYg=="
+        },
+        {
+            "title": "379 F.E.(2019 Credit Pattern) Winter Session-2025 12- January- 2026",
+            "year": "FE",
+            "pattern": "2019",
+            "result_date": "12- January- 2026",
+            "serial_number": "379",
+            "pattern_name": "ZTghRr9/s2fU6d3X5Ud24ryQ65+thgIpsDH4VGd/qPbbmETHnWlcygjJWxk+4fx/",
+            "pattern_id": "6Qw72CLlcXSacHyT9a7RkQ=="
+        },
+        {
+            "title": "380 S.E.(2015 CREDIT PAT.) APR-MAY 2025 25- August- 2025",
+            "year": "SE",
+            "pattern": "2015",
+            "result_date": "25- August- 2025",
+            "serial_number": "380",
+            "pattern_name": "Em40c79fxBCukiAu6NG1TuQoCK5FyfuGPks+hxvcEBFF+JWR9eSUu+KR4MRGHbvw",
+            "pattern_id": "RfXwFNFA3rffqPw2FAecsA=="
+        },
+        {
+            "title": "382 F.E.(2015 CREDIT PAT.) APR-MAY 2025 06- August- 2025",
+            "year": "FE",
+            "pattern": "2015",
+            "result_date": "06- August- 2025",
+            "serial_number": "382",
+            "pattern_name": "mFHJffHBAgf1Gxe1artTulj8gBb+P4WqxcPRpFH8ZwcS09JToRv0tqd/akHWqT0V",
+            "pattern_id": "UVE+wm1JkNgLibyTrlrgUw=="
+        },
+        {
+            "title": "384 T.E.(2015 CREDIT PAT.) APR-MAY 2025 18- July- 2025",
+            "year": "TE",
+            "pattern": "2015",
+            "result_date": "18- July- 2025",
+            "serial_number": "384",
+            "pattern_name": "8eJ5Jpr3H4gYM35IpdUYorWXNgRIUAE2jj0tkGPjLLNr5nzNI18ZmPpPv4aAfRwd",
+            "pattern_id": "6r663v5xkCoAbwR6CULUqg=="
+        },
+        {
+            "title": "389 B.E.(2015 CREDIT PAT.) APR-MAY 2025 10- July- 2025",
+            "year": "BE",
+            "pattern": "2015",
+            "result_date": "10- July- 2025",
+            "serial_number": "389",
+            "pattern_name": "Tih3rdDx8GtEytgssm1pjpA6gkxDIkOumqydeXybPhO1duTYdkAaNYrMFYE/j+If",
+            "pattern_id": "cBg2pu1HQ6jWyBJsegrUVQ=="
+        }
+    ]
 }
