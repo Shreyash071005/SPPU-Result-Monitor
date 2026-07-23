@@ -1,0 +1,399 @@
+# SPPU Result Monitor
+
+A completely free and automated Result Monitoring System for the Savitribai Phule Pune University (SPPU) Online Result Portal.
+
+The system continuously monitors the official SPPU Result Dashboard using GitHub Actions and automatically detects newly declared Engineering examination results.
+
+When a new result is declared, the system:
+
+- Detects the newly published result.
+- Stores the result metadata.
+- Sends an email notification.
+- Updates the public website automatically.
+- Maintains a complete history of declared results.
+- Runs automatically every 5 minutes using GitHub Actions.
+
+---
+
+## Features
+
+- 100% Free Hosting.
+- GitHub Actions based monitoring.
+- Automatic Result Detection.
+- Email Notifications.
+- Public Website Hosting using GitHub Pages.
+- First Deployment Protection.
+- Result History Management.
+- Beautiful Console Logs.
+- Production Ready Architecture.
+- No VPS Required.
+- No Background Servers Required.
+- Zero Monthly Cost.
+
+---
+
+## How It Works
+
+```
+                    GitHub Actions
+                    (Every 5 Minutes)
+                             |
+                             |
+                             v
+                      Run monitor.py
+                             |
+                             v
+               Fetch SPPU Result Dashboard
+                             |
+                             v
+                     Parse Engineering Results
+                             |
+                             v
+                    Compare Result History
+                             |
+                     ------------------------
+                     |                      |
+                    OLD                    NEW
+                     |                      |
+                   Ignore                   |
+                                              |
+                                              v
+                                    Save Result Metadata
+                                              |
+                                              v
+                                    Send Email Notification
+                                              |
+                                              v
+                                     Update Website Files
+                                              |
+                                              v
+                                       Commit Changes
+                                              |
+                                              v
+                                        GitHub Pages
+                                              |
+                                              v
+                                      Public Result Website
+```
+
+---
+
+## Technologies Used
+
+| Technology | Purpose |
+|-----------|-----------|
+| Python | Backend Logic |
+| GitHub Actions | Automated Monitoring |
+| GitHub Pages | Website Hosting |
+| Requests | Fetch Dashboard |
+| BeautifulSoup | HTML Parsing |
+| Gmail SMTP | Email Notifications |
+| JSON | Result Storage |
+| HTML & CSS | Website UI |
+| Python Dotenv | Environment Variables |
+
+---
+
+## Project Structure
+
+```
+SPPU-Result-Monitor
+│
+├── .github
+│   └── workflows
+│       └── monitor.yml
+│
+├── data
+│   ├── latest_results.json
+│   └── result_history.json
+│
+├── services
+│   ├── dashboard_parser.py
+│   ├── history_manager.py
+│   ├── email_service.py
+│   └── website_generator.py
+│
+├── website
+│   ├── index.html
+│   └── style.css
+│
+├── monitor.py
+├── config.py
+├── requirements.txt
+├── .env.example
+├── .gitignore
+└── README.md
+```
+
+---
+
+## Result Detection Logic
+
+The system uniquely identifies a result using:
+
+```
+Academic Year
++
+Credit Pattern
++
+Result Declaration Date
+```
+
+Example:
+
+```
+TE
++
+2019
++
+23 July 2026
+```
+
+Only when all three values are different from the previously stored records will the system consider the result as newly declared.
+
+---
+
+## First Deployment Logic
+
+During the first deployment:
+
+```
+Dashboard Results Found
+        |
+        v
+Store Existing Results
+        |
+        v
+No Email Notifications
+        |
+        v
+Generate Website
+        |
+        v
+Exit
+```
+
+This prevents unnecessary email notifications for previously declared results.
+
+---
+
+## Automatic Monitoring
+
+The GitHub Action runs every:
+
+```
+5 Minutes
+```
+
+Equivalent to:
+
+```
+12 Times Per Hour
+
+↓
+
+288 Times Per Day
+
+↓
+
+8640 Times Per Month
+```
+
+No VPS or dedicated server is required.
+
+---
+
+## Email Notification Example
+
+```
+Subject:
+
+NEW SPPU RESULT DECLARED
+
+
+-----------------------------------------
+
+Title:
+
+T.E.(2019 Credit Pattern)
+SUMMER SESSION 2026
+
+-----------------------------------------
+
+Academic Year:
+
+TE
+
+-----------------------------------------
+
+Credit Pattern:
+
+2019
+
+-----------------------------------------
+
+Result Date:
+
+23 July 2026
+
+-----------------------------------------
+
+Official Result Dashboard:
+
+https://onlineresults.unipune.ac.in/result/dashboard/default
+
+-----------------------------------------
+
+This is an automated notification
+generated by SPPU Result Monitor.
+```
+
+---
+
+## Website Features
+
+The public website displays:
+
+- Monitoring Status.
+- Last Checked Time.
+- Latest Declared Results.
+- Previous Declared Results.
+- Official SPPU Result Dashboard Link.
+- Automatic Updates.
+
+---
+
+## Environment Variables
+
+Create a `.env` file using the following format:
+
+```env
+EMAIL_ADDRESS=
+
+EMAIL_APP_PASSWORD=
+
+NOTIFICATION_EMAIL=
+
+WEBSITE_NAME=SPPU Result Monitor
+
+OFFICIAL_RESULT_URL=https://onlineresults.unipune.ac.in/result/dashboard/default
+
+CHECK_INTERVAL=300
+```
+
+---
+
+## GitHub Secrets
+
+Add the following GitHub Secrets:
+
+```
+EMAIL_ADDRESS
+
+EMAIL_APP_PASSWORD
+
+NOTIFICATION_EMAIL
+```
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Move into the project directory:
+
+```bash
+cd SPPU-Result-Monitor
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run locally:
+
+```bash
+python monitor.py
+```
+
+---
+
+## GitHub Actions Deployment
+
+1. Push the project to GitHub.
+2. Add GitHub Secrets.
+3. Configure the GitHub Actions workflow.
+4. Enable GitHub Actions.
+5. Enable GitHub Pages.
+6. Run the workflow manually for testing.
+7. Enjoy fully automated result monitoring.
+
+---
+
+## Public Website Hosting
+
+The website is hosted using GitHub Pages and is automatically updated whenever:
+
+- A new result is declared.
+- Result history is updated.
+- GitHub Actions completes successfully.
+
+---
+
+## Monitoring Frequency
+
+```
+Every 5 Minutes
+```
+
+This ensures that newly declared results are detected quickly while remaining completely free to operate.
+
+---
+
+## Advantages
+
+- Completely Free.
+- 24x7 Automated Monitoring.
+- Zero Infrastructure Cost.
+- Automatic Email Notifications.
+- Public Website Hosting.
+- Lightweight and Fast.
+- No VPS Required.
+- Easy to Maintain.
+- Production Ready.
+
+---
+
+## Future Improvements
+
+- Telegram Notifications.
+- Discord Notifications.
+- WhatsApp Notifications.
+- RSS Feed Support.
+- Multi-University Support.
+- Result Subscription System.
+- Mobile Friendly Website.
+- Dark Mode Support.
+
+---
+
+## License
+
+This project is intended for educational and personal use.
+
+The system only monitors publicly available information from the official SPPU Online Result Dashboard and does not modify or interfere with the official university infrastructure.
+
+---
+
+## Developed By
+
+```
+Shreyash Pawar
+```
